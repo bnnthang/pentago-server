@@ -27,6 +27,6 @@ def disconnect(sid):
 
 if __name__ == '__main__':
     PORT = int(os.getenv("PORT"))
-    print(PORT)
+    # print(PORT)
     # PORT = 4602
     eventlet.wsgi.server(eventlet.listen(('', PORT)), app)
