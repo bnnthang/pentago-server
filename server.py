@@ -1,5 +1,6 @@
 import eventlet
 import socketio
+import os
 
 sio = socketio.Server()
 app = socketio.WSGIApp(sio, static_files={
@@ -25,4 +26,7 @@ def disconnect(sid):
     print('disconnect ', sid)
 
 if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('', 4602)), app)
+    PORT = int(os.getenv("PORT"))
+    # print(PORT)
+    # PORT = 4602
+    eventlet.wsgi.server(eventlet.listen(('', PORT)), app)
